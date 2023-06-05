@@ -9,6 +9,7 @@ import org.springframework.http.converter.StringHttpMessageConverter;
 import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.ViewResolverRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
@@ -64,6 +65,13 @@ public class WebConfig implements WebMvcConfigurer {
         return filter;
     }
 
+    @Override
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        registry.addResourceHandler("/css/**").addResourceLocations("/resources/static/");
+        registry.addResourceHandler("/image/**").addResourceLocations("/resources/image/");
+        registry.addResourceHandler("/scripts/**").addResourceLocations("/resources/scripts/");
+        registry.addResourceHandler("/*.html").addResourceLocations("/WEB-INF/");
+    }
     @Override
     public void extendMessageConverters(List<HttpMessageConverter<?>> converters) {
         for (HttpMessageConverter<?> converter : converters) {

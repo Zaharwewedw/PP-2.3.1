@@ -3,15 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <title>Up date</title>
+    <link rel="stylesheet" href="users.css">
 </head>
 <body>
-<h2>Up date User</h2>
+<h2 class="headline">Up date User</h2>
 <div>
 
     <form th:action="@{/update}" th:object="${user}" method="post">
         <input type="hidden" name="id" th:value="${user.getId()}">
         <fieldset>
-            <legend>Данные пользователя</legend>
+            <legend>Data</legend>
             <p>
                 <label th:for="name">Name</label>
                 <input type="text" name="name" th:id="name" th:value="${user.getName()}">

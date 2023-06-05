@@ -1,14 +1,14 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" th:with="lang=${#locale.language}" th:lang="${lang}">
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta meta th:charset="UTF-8"/>
   <title>Users</title>
 </head>
 <body>
 <table border="1">
   <thead>
-  <tr>Пользователи</tr>
+  <tr>User</tr>
   </thead>
   <tbody>
   <tr>
@@ -23,7 +23,7 @@
     <td th:text="${user.age}"></td>
     <td th:text="${user.email}"></td>
     <td>
-      <a th:href="@{'/edit/'+${user.id}}">edit</a>
+      <a th:href="@{'/update/'+${user.id}}">edit</a>
       <a th:href="@{'/delete/'+${user.id}}">delete</a>
     </td>
   </tr>

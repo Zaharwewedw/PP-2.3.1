@@ -2,8 +2,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <h1>Добавить пользователя</h1>
+  <meta http-equiv="Content-Type" content="text/html; charset=cp1251" />
+  <h1>Add User</h1>
 </head>
 <body>
 <form th:action="@{/add}" method="post">
@@ -11,7 +11,7 @@
   <p><input type="text" id="name" name="name" required></p>
   <p><label for="age">age</label></p>
   <p><input type="number" id="age" name="age" required></p>
-  <p><label for="email">city</label></p>
+  <p><label for="email">email</label></p>
   <p><input type="text" id="email" name="email" required></p>
   <p>
     <input type="submit" value="add">

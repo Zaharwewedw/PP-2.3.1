@@ -2,20 +2,45 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <html lang="en">
 <head>
+  <style>
+    .glow-button {
+      text-decoration: none;
+      display: inline-block;
+      padding: 15px 30px;
+      margin: 10px 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 40px 40px #F137A6 inset, 0 0 0 0 #F137A6;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: bold;
+      letter-spacing: 2px;
+      color: white;
+      transition: .15s ease-in-out;
+    }
+    .glow-button:hover {
+      box-shadow: 0 0 10px 0 #F137A6 inset, 0 0 10px 4px #F137A6;
+      color: #F137A6;
+    }
+  </style>
   <meta http-equiv="Content-Type" content="text/html; charset=cp1251" />
-  <h1>Add User</h1>
 </head>
-<body>
-<form th:action="@{/add}" method="post">
-  <p><label for="name">name</label></p>
-  <p><input type="text" id="name" name="name" required></p>
-  <p><label for="age">age</label></p>
-  <p><input type="number" id="age" name="age" required></p>
-  <p><label for="email">email</label></p>
-  <p><input type="text" id="email" name="email" required></p>
-  <p>
-    <input type="submit" value="add">
-  </p>
-</form>
+<body style="background-color: blueviolet">
+  <div style="background-color: #FFC0CB ">
+    <h1 style="font-size: 60px; color: #1b2631; text-align: center">Add User</h1>
+    <form th:action="@{/add}" method="post">
+      <div style="text-align: center">
+       <label for="name" style="font-size: 50px">name   </label>
+       <input type="text" id="name" name="name" required>
+      <br>
+       <label for="age" style="font-size: 50px">age   </label>
+       <input type="number" id="age" name="age" required>
+      <br>
+       <label for="email" style="font-size: 50px">email   </label>
+       <input type="text" id="email" name="email" required>
+      </div>
+       <p style="text-align: center; font-size: 50px">
+        <input type="submit" value="Add" class="glow-button">
+      </p>
+    </form>
+  </div>
 </body>
 </html>

@@ -31,7 +31,7 @@ public class UserController {
         return modelAndView;
     }
     @RequestMapping(value = "/add", method = RequestMethod.GET)
-    public String addPage() {
+    public String addUser() {
         return "addUser";
     }
 
@@ -42,7 +42,7 @@ public class UserController {
     }
 
     @RequestMapping(value = "/update/{id}", method = RequestMethod.GET)
-    public ModelAndView editPage(@PathVariable("id") long id) {
+    public ModelAndView updatePage(@PathVariable("id") long id) {
         User user = userService.getByIdUser(id);
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("сhangeUser");
@@ -51,7 +51,7 @@ public class UserController {
     }
 
     @RequestMapping(value = "/update", method = RequestMethod.POST)
-    public String editUser(@ModelAttribute("user") User user) {
+    public String updateUser(@ModelAttribute("user") User user) {
         userService.saveUser(user);
         return "redirect:/";
     }

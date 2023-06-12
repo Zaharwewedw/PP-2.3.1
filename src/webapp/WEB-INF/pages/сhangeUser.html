@@ -52,18 +52,20 @@
 <body style="background-color: blueviolet">
     <div style="background-color: #FFC0CB; text-align: center">
         <h1 style="font-size: 60px; color: #1b2631; text-align: center">Up date User</h1>
-        <form  method="post" th:action="@{/update}" th:object="${user}">
-            <input type="hidden" name="_method" value="PATCH" />
+        <form  th:method="PATCH" th:action="@{/update}" th:object="${user}">
             <div style="text-align: center">
             <input type="hidden" name="id" th:value="${user.getId()}">
                 <label th:for="name" style="font-size: 50px">Name</label>
                 <input type="text" name="name" th:id="name" th:value="${user.getName()}">
+                <div style="color: red" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Error name</div>
                  <br/>
                 <label th:for="age" style="font-size: 50px">Age</label>
-                <input type="text" name="age" th:id="age" th:value="${user.getAge()}">
+                <input type="number" min="1" max="100" required name="age" th:id="age" th:value="${user.getAge()}">
+                <div style="color: red" th:if="${#fields.hasErrors('age')}" th:errors="*{age}">Error age</div>
                  <br/>
                 <label th:for="email" style="font-size: 50px">Email</label>
                 <input type="text" name="email" th:id="email" th:value="${user.getEmail()}"><br/>
+                <div style="color: red" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Error email</div>
             </div>
             <button type="submit" class="gradient-button">Up Date</button>
         </form>

@@ -5,20 +5,17 @@ import javax.persistence.GenerationType;
 import javax.persistence.Table;
 import javax.persistence.Id;
 import javax.persistence.GeneratedValue;
-import javax.validation.constraints.Email;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.*;
 
 @Entity
 @Table(name = "users")
 public class User {
-
     @NotEmpty(message = "The name cannot be empty")
     @Size(min = 2, max = 15, message = "The name must consist of less than 2 and no more than 15 characters")
     private String name;
-    @Min(value = 14, message = "Access to persons under 14 years of age is prohibited" )
-    private Integer age;
+    @Min(value = 14, message = "Access to persons under 14 years of age is prohibited")
+    @Max(value = 150, message = "The age is too great")
+    private int age;
     @Email(message = "The email does not meet the requirements")
     @NotEmpty(message = "The email cannot be empty")
     private String email;

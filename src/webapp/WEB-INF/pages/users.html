@@ -3,6 +3,24 @@
 <html lang="en">
 <head>
   <style>
+    .gradient-button {
+      text-decoration: none;
+      display: inline-block;
+      color: white;
+      padding: 20px 30px;
+      margin: 10px 20px;
+      border-radius: 10px;
+      font-family: 'Montserrat', sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      background-image: linear-gradient(to right, #9EEFE1 0%, #4830F0 51%, #9EEFE1 100%);
+      background-size: 200% auto;
+      box-shadow: 0 0 20px rgba(0, 0, 0, .1);
+      transition: .5s;
+    }
+    .gradient-button:hover {
+      background-position: right center;
+    }
     .double-border-button {
       text-decoration: none;
       display: inline-block;
@@ -109,7 +127,9 @@
         <td th:text="${user.email}" style="text-align: center; font-size: 50px"></td>
         <td>
           <a th:href="@{'/update/'+${user.id}}" class="box">edit</a>
-          <a th:href="@{'/delete/'+${user.id}}" class="box">delete</a>
+          <form th:method="DELETE" th:action="@{'/delete/'+${user.id}}" th:object="${user}">
+            <button type="submit" CLASS="gradient-button">DELETE</button>
+          </form>
         </td>
       </tr>
     </table>

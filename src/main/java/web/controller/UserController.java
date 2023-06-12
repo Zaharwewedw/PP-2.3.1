@@ -2,12 +2,9 @@ package web.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
-import web.Model.User;
+import web.model.User;
 import web.service.UserService;
 
 import java.util.List;
@@ -22,7 +19,7 @@ public class UserController {
         this.userService = userService;
     }
 
-    @RequestMapping(value = "/", method = RequestMethod.GET)
+    @GetMapping(value = "/")
     public ModelAndView allUsers() {
         List<User> users = userService.getAllUsers();
         ModelAndView modelAndView = new ModelAndView();
@@ -30,18 +27,18 @@ public class UserController {
         modelAndView.addObject("usersList", users);
         return modelAndView;
     }
-    @RequestMapping(value = "/add", method = RequestMethod.GET)
+    @GetMapping(value = "/add")
     public String addUser() {
         return "addUser";
     }
 
-    @RequestMapping(value = "/add", method = RequestMethod.POST)
+    @PostMapping(value = "/add")
     public String addUser(@ModelAttribute("user") User user) {
         userService.saveUser(user);
         return "redirect:/";
     }
 
-    @RequestMapping(value = "/update/{id}", method = RequestMethod.GET)
+    @GetMapping(value = "/update/{id}")
     public ModelAndView updatePage(@PathVariable("id") long id) {
         User user = userService.getByIdUser(id);
         ModelAndView modelAndView = new ModelAndView();
@@ -50,16 +47,15 @@ public class UserController {
         return modelAndView;
     }
 
-    @RequestMapping(value = "/update", method = RequestMethod.POST)
+    @PostMapping(value = "/update")
     public String updateUser(@ModelAttribute("user") User user) {
-        userService.saveUser(user);
+        userService.upDateUser(user);
         return "redirect:/";
     }
 
-    @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
+    @DeleteMapping(value = "/delete/{id}")
     public String deleteUser(@PathVariable("id") long id) {
-        User user = userService.getByIdUser(id);
-        userService.deleteUser(user);
+        userService.deleteUser(id);
         return "redirect:/";
     }
 }

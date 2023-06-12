@@ -1,15 +1,26 @@
-package web.Model;
+package web.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GenerationType;
 import javax.persistence.Table;
 import javax.persistence.Id;
 import javax.persistence.GeneratedValue;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
+
 @Entity
 @Table(name = "users")
 public class User {
+
+    @NotEmpty(message = "The name cannot be empty")
+    @Size(min = 2, max = 15, message = "The name must consist of less than 2 and no more than 15 characters")
     private String name;
+    @Min(value = 14, message = "Access to persons under 14 years of age is prohibited" )
     private Integer age;
+    @Email(message = "The email does not meet the requirements")
+    @NotEmpty(message = "The email cannot be empty")
     private String email;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,11 +29,13 @@ public class User {
     public User() {
 
     }
+
     public User(String name, int age, String email) {
-       this.name = name;
-       this.age = age;
-       this.email = email;
+        this.name = name;
+        this.age = age;
+        this.email = email;
     }
+
     public int getAge() {
         return age;
     }

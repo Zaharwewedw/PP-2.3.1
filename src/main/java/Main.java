@@ -1,4 +1,4 @@
-import web.Model.User;
+import web.model.User;
 import web.service.UserService;
 import web.service.UserServiceImp;
 

@@ -52,7 +52,8 @@
 <body style="background-color: blueviolet">
     <div style="background-color: #FFC0CB; text-align: center">
         <h1 style="font-size: 60px; color: #1b2631; text-align: center">Up date User</h1>
-        <form th:action="@{/update}" th:object="${user}" method="post">
+        <form  method="post" th:action="@{/update}" th:object="${user}">
+            <input type="hidden" name="_method" value="PATCH" />
             <div style="text-align: center">
             <input type="hidden" name="id" th:value="${user.getId()}">
                 <label th:for="name" style="font-size: 50px">Name</label>
